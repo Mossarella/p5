@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
+import Head from "next/head";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +26,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* <Head>
+    //if stylesheet put it in the header
+      </Head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"
+          strategy="beforeInteractive"
+        ></Script>
+        {/* <Script
+          src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/addons/p5.dom.min.js"
+          strategy="beforeInteractive"
+        ></Script> */}
+        <Script
+          src="https://unpkg.com/p5.js-svg@1.6.0"
+          strategy="beforeInteractive"
+        ></Script>
         {children}
       </body>
     </html>
