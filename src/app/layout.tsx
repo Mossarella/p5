@@ -31,6 +31,7 @@ export default function RootLayout({
       </Head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <Script
           src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"
@@ -40,10 +41,19 @@ export default function RootLayout({
           src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/addons/p5.dom.min.js"
           strategy="beforeInteractive"
         ></Script> */}
-        <Script
+        {/* <Script
           src="https://unpkg.com/p5.js-svg@1.6.0"
           strategy="beforeInteractive"
+        ></Script> */}
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.6.5/opentype.min.js"
+          strategy="beforeInteractive"
         ></Script>
+        <Script
+          src="https://cdn.rawgit.com/nodebox/g.js/master/dist/g.min.js"
+          strategy="beforeInteractive"
+        ></Script>
+
         {children}
       </body>
     </html>

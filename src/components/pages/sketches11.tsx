@@ -13,13 +13,14 @@ const sketch = (p: p5) => {
   };
 
   p.setup = () => {
-    p.createCanvas(p.windowWidth, p.windowHeight);
+    p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
     p.rectMode("center");
     p.angleMode("degrees");
   };
 
   p.draw = () => {
-    p.translate(p.width / 2, p.height / 2);
+    p.orbitControl();
+    // p.translate(p.width / 2, p.height / 2);
 
     p.background(70, 148, 167);
 

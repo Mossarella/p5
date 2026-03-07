@@ -1,21 +1,27 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 // ✅ Tell TypeScript about global p5
 declare global {
   interface Window {
     p5: any;
+    opentype: any;
+    g: any;
   }
 }
 
 type P5WrapperProps = {
   sketch: (p: any) => void;
   resize?: boolean; // Optional prop to auto-resize
-  name: string;
+  name?: string;
 };
 
 const P5Wrapper = ({ sketch, resize = true, name }: P5WrapperProps) => {
+  const params = useParams();
+  name = params.sketch as string;
+
   const wrapperRef = useRef<HTMLDivElement>(null);
   const p5Instance = useRef<any>(null); // Use any for now
 
@@ -34,9 +40,9 @@ const P5Wrapper = ({ sketch, resize = true, name }: P5WrapperProps) => {
         if (event.key === "1" && p5Instance.current) {
           p5Instance.current.saveGif("mySketch", 5);
         }
-        if (event.key === "2" && p5Instance.current) {
-          console.log(name);
-        }
+        // if (event.key === "2" && p5Instance.current) {
+        //   console.log(name);
+        // }
       };
 
       window.addEventListener("keydown", handleKeydown);
